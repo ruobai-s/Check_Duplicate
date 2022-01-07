@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruobai.repository.ClassRepository">
+<!--    级联查询-->
+    <select id="findClassInfo" resultType="ClassInfoStatistic">
+        select * from classgrade_info_statistic limit #{page},#{limit}
+    </select>
+    <delete id="deleteClass">
+        delete from classgrade_info_statistic where class_id=#{class_id}
+    </delete>
+    <update id="updateClass" parameterType="ClassInfoStatistic">
+        update classgrade_info_statistic set class_id=#{class_id},usual_grades=#{usual_grades},usual_grades_average=#{usual_grades_average},final_grades=#{final_grades_average},
+        final_grades_average=#{final_grades_average},overall_grades=#{overall_grades},overall_grades_average=#{overall_grades_average} where id=#{id}
+    </update>
+    <select id="checkTotal" resultType="Long">
+        select count(*) from class_info
+    </select>
+</mapper>

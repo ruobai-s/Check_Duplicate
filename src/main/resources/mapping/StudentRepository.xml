@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruobai.repository.StudentRepository">
+    <select id="findStudentInfo" resultType="Student">
+        select * from student_info limit #{page},#{limit}
+    </select>
+    <update id="updateStudent">
+        update student_info set phone=#{phone},password=#{password},college=#{college} where sno=#{sno};
+    </update>
+    <delete id="deleteStudent">
+        delete from student_info where sno=#{sno}
+    </delete>
+    <insert id="addStudentInfo">
+        insert into student_info values (0,#{name},#{sex},#{college},#{class_id},#{phone},#{password})
+    </insert>
+    <select id="checkTotal" resultType="Long">
+        select count(*) from student_info
+    </select>
+    <select id="login" resultType="Student">
+        select * from student_info where sno=#{sno} and password=#{password}
+    </select>
+    <insert id="register">
+        <selectKey resultType="INTEGER" order="AFTER" keyProperty="sno">
+            SELECT last_insert_id()
+        </selectKey>
+        insert into student_info values (0,#{name},#{sex},#{college},#{class_id},#{phone},#{password});
+    </insert>
+</mapper>

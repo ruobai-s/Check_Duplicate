@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+	<title>首页</title>
+	<script type="text/javascript" src="./jquery/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./layui/css/layui.css">
+	<script type="text/javascript" src="./layui/layui.js"></script>
+	<script type="text/javascript" src="./js/file.js"></script>
+	<link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}"/>
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+			<div class="layui-logo">Check Duplicate System</div>
+			<!-- 头部区域（可配合layui已有的水平导航） -->
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="javascript:;" th:text="${name}">
+						<img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+					</a>
+					<dl class="layui-nav-child">
+						<dd><a th:href="@{/user}">基本资料</a></dd>
+						<dd><a th:href="@{/set}">安全设置</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item"><a th:href="@{/login}">退出</a></li>
+			</ul>
+		</div>
+
+		<div class="layui-side layui-bg-black">
+			<div class="layui-side-scroll">
+				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item">
+						<a class="" href="javascript:;">查重系统
+							<span class="layui-nav-more"></span>
+						</a>
+						<dl class="layui-nav-child">
+							<dd><a th:href="@{/text}">文本查重</a></dd>
+							<dd class="layui-this"><a th:href="@{/file}">文件查重</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">信息管理
+							<span class="layui-nav-more"></span>
+						</a>
+						<dl class="layui-nav-child">
+							<dd><a th:href="@{/student}">学生信息管理</a></dd>
+							<dd><a th:href="@{/classinfo}">班级学习信息统计</a></dd>
+							<dd class="layui-this"><a th:href="@{/self_info}">个人学习信息统计</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-body">
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;">
+				<div class="">
+					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+						<legend>在线学习系统查重</legend>
+					</fieldset>
+
+					<form class="layui-form" id="files_form">
+						<div class="layui-form-item">
+							<label class="layui-form-label">作业标题</label>
+							<div class="layui-input-block">
+								<input th:name="name" id="text_title" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入作业标题" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">作业内容</label>
+							<div class="layui-input-block">
+								<textarea th:name="id" id="text_content" placeholder="请输入作业内容" class="layui-textarea"></textarea>
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<button type="button" id="text_submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- 查重记录打印 -->
+				<div class="">
+					<div class="duplicate_rate">
+					<!-- 图表 -->
+					</div>
+					<div id="log-start">
+						<!-- 日志打印 -->
+						<table class="layui-table" lay-size="lg">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							</colgroup>
+							<thead>
+							<tr>
+								<th>文件名</th>
+								<th>上传时间</th>
+								<th>下载地址</th>
+							</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-footer">
+			<!-- 底部固定区域 -->
+			© ruobai.com - 团队信息
+		</div>
+	</div>
+<script src="./layui/layui.js"></script>
+<script>
+// JavaScript代码区域
+layui.use('element', function(){
+	var element = layui.element;
+});
+</script>
+</body>
+</html>

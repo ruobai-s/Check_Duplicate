@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruobai.repository.SelfRepository">
+    <resultMap id="PersonalInfoMap" type="PersonalInfoStatisticQO">
+        <id column="id" property="id"/>
+        <result column="sno" property="sno"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="class_id" property="class_id"/>
+        <result column="course_id" property="course_id"/>
+        <result column="usual_grades" property="usual_grades"/>
+        <result column="final_grades" property="final_grades"/>
+        <result column="overall_grades" property="overall_grades"/>
+        <collection property="aClass" ofType="Class">
+            <id column="Class_id" property="class_id"/>
+            <result column="class_name" property="class_name"/>
+        </collection>
+        <collection property="course" ofType="Course">
+            <id column="course_id" property="course_id"/>
+            <result column="course_name" property="course_name"/>
+            <result column="course_time" property="course_time"/>
+            <result column="credit" property="credit"/>
+        </collection>
+    </resultMap>
+    <select id="findSelfInfo" resultMap="PersonalInfoMap">
+        select id,sno, name, sex, personalgrade_info_statistic.class_id class_id,
+        personalgrade_info_statistic.course_id course_id, usual_grades, final_grades, overall_grades,
+        class_info.class_id Class_id, class_name,
+        course_info.course_id Course_id, course_name, course_times, credit
+        from personalgrade_info_statistic,class_info,course_info where
+        personalgrade_info_statistic.class_id=class_info.class_id and
+        personalgrade_info_statistic.course_id=course_info.course_id limit #{page},#{limit}
+    </select>
+</mapper>

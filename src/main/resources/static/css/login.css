@@ -1,0 +1,91 @@
+.loginDiv{
+    width: 100%;
+    height: 100%;
+    background: url("../img/back.jpg") no-repeat;
+    background-size: cover;
+}
+i{
+    position: absolute;
+}
+img{
+
+    position: absolute;
+}
+.imgStyle{
+    width: 100%;
+    height: 100%;
+}
+.loginForm{
+	top: 12.5rem;
+    margin: 0 auto;
+    background-color: #e7e7e7;
+    width: 25rem;
+    height: 25rem;
+    z-index: 9999;
+    position: relative;
+    opacity: 0.75;
+}
+.logoHead{
+    width: 100%;
+	top: 2.5rem;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+.formData{
+	width: 100%;
+	height: 100%;
+	top: 4rem;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+.layui-form-label{
+	text-align: center;
+}
+.layui-input{
+	font-size: 15px;
+	border-radius: 0.5em;
+}
+.cardDiv{
+    width: 7.5rem;
+    height: 2.5rem;
+    float: left;
+}
+.codeDiv{
+    width: 5rem;
+    height: 2.5rem;
+    float: left;
+ }
+.cardInput{
+    width: 7.5rem;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 0.5em 0em 0em 0.5em;
+}
+.codeInput{
+    width: 4.5rem;
+    height: 2.5rem;
+    font-size: 15px;
+    border-radius: 0em 0.5em 0.5em 0em;
+    /*验证码样式*/
+    font-family: Arial;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+/* 注册页面样式 */
+.registerPage{
+    width: 100%;
+    height: 100%;
+    /*background-color: #cccccc;*/
+    display: none;
+    opacity: 0.75;
+}
+.registerDiv{
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0.75;
+}

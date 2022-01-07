@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruobai.repository.UtilsRepository">
+    <select id="checkId" resultType="java.lang.Integer">
+        select class_id from class_info where class_name=#{class_name}
+    </select>
+    <select id="checkName" resultType="java.lang.String">
+        select class_name from class_info where class_id=#{class_id}
+    </select>
+    <select id="checkCourse" resultType="java.lang.String">
+        select course_name from course_info where course_id=#{course_id}
+    </select>
+</mapper>
